@@ -1,4 +1,5 @@
 import ctypes,sys,time
+libName="./_simpleUnrar.so"
 
 class deletable(object):
  def setDel(self,func,what):
@@ -18,7 +19,7 @@ class delString(deletable,str):
 class RarFile(object):
  def __init__(self,filename):
   self.fn=filename
-  self.lib=ctypes.cdll.LoadLibrary("./simpleUnrar.so")
+  self.lib=ctypes.cdll.LoadLibrary(libName)
 
  def read(self,name,size=0):
   rType=ctypes.POINTER(ctypes.c_char)

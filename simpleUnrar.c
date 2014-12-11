@@ -192,7 +192,7 @@ long c,fl;
 //then a call where the limit would be less than the value read+the value going to be read (90000<65536+65536) so fplimit would be used
 fl=r->fplimit-r->fpos;
 c=p2;
-if(fl) {
+if(r->fplimit&&fl) {
 if(p2>=fl) {
 if(fl<=p2) {
 c=fl;
@@ -204,7 +204,7 @@ c=fl;
 memcpy(r->fpTemp,fc,c);
 r->fpos+=c;
 r->fpTemp+=c;
-if(r->fpos>=r->fplimit) {
+if(r->fplimit&&r->fpos>=r->fplimit) {
 return -1;
 }
 //printf("%ld\n",p2);
